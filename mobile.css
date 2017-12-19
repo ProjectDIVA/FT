@@ -74,6 +74,15 @@ header nav .li {
 #life td{
 	border: 1px solid;
 }
+#song {
+	font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Kaku Gothic Pro', 'Meiryo';
+}
 .small {
 	font-size: 0.8em;
+}
+.route {
+	font-size: 120%;
+	font-weight: bold;
+	margin-top: 1em;
+	margin-bottom: 5px;
 }
