@@ -36,6 +36,12 @@ header nav .li {
 	margin: 0 auto;
 	padding-bottom: 40px;
 }
+#content p {
+	/*margin: 0.6em 0;*/
+}
+#content div {
+	line-height: 1.8em;
+}
 #list {
 	font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Kaku Gothic Pro', 'Meiryo';
 	max-width: 95%;
