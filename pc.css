@@ -79,6 +79,9 @@ header nav .li {
 .small {
 	font-size: 80%;
 }
+.right {
+	float: right;
+}
 .route {
 	font-size: 120%;
 	font-weight: bold;

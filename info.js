@@ -62,7 +62,7 @@ db[9][0]="数多の舞 -Dance of many-#11#10#Colorful Tone#183";
 db[9][1]="-";
 db[9][2]="4,389,○,105.75,105.75,317750,320140,0";
 db[9][3]="6,454,○,106.14,106.14,341250,345150,0";
-db[9][4]="7,518,×,105.71,105.73,392250,396790,0";
+db[9][4]="7,518,×,105.71,105.74,392250,396790,0";
 db[9][5]="8.5,527,×,106.17,106.2,463500,469130,20160";
 db[10][0]="アマツキツネ#62#-#Colorful Tone#190";
 db[10][1]="2.5,399,-,-,331750,334350,1360";
@@ -1453,6 +1453,7 @@ function getInfo() {
 		var str = url.substr(1);
 		var strs = str.split("=");
 		songId = Number(strs[1]);
+		//alert(songId);
 		if (songId > 0 && songId <= n_songs) {
 			//alert(songinfo);
 			var songInfo = db[songId-1][0].split("#");
@@ -1464,53 +1465,78 @@ function getInfo() {
 			else document.getElementById("ac").innerHTML = songInfo[1] + "（Extra：" + songInfo[2] + "）";
 			document.getElementById("cs").innerHTML = songInfo[3];
 			document.getElementById("bpm").innerHTML = songInfo[4];
-			getEasy();
-			getNormal();
-			getHard();
-			getExtreme();
-			getExtra();
+			var isCS = document.getElementById("rcs").checked;
+			//alert(isCS);
+			getCont(isCS);
 		}
 	}
 }
-function getEasy() {
+function getCont(isCS) {
+	if (songId > 0 && songId <= n_songs) {
+		if (isCS) {
+			document.getElementById("rac").checked = false;
+		} else {
+			document.getElementById("rcs").checked = false;
+		}
+		getEasy(isCS);
+		getNormal(isCS);
+		getHard(isCS);
+		getExtreme(isCS);
+		getExtra(isCS);
+	}
+}
+function getEasy(isCS) {
 	var info = db[songId-1][1].split(",");
 	if (info[0] == null || info[0] == "-")
 		document.getElementById("easy").innerHTML = "未配信";
 	else {
 		var k = Number(info[4]);
-		var fcmp = Math.round(21000000 / k) / 1000.0;
+		var fcmp = Math.round(21000000.0 / k) / 1000.0;
 		var score = Number(info[5]) + Number(info[6]);
+		if (isCS) score = Math.round(score * 1.1);
 		document.getElementById("easy").innerHTML = "<div>★" + info[0] + "</div><div>Note数：" + info[1] + "</div><div>达成率理论值：" + info[2] + "%</div><div>1 fine达成率变化：" + fcmp + "%</div><div>理论值必要分数：" + score + "</div>";
 	}
 }
-function getNormal() {
+function getNormal(isCS) {
 	var info = db[songId-1][2].split(",");
 	if (info[0] == "-")
 		document.getElementById("normal").innerHTML = "未配信";
 	else {
+		var c = info[3];
+		if (isCS) c = info[4];
 		var k = Number(info[5]);
-		var r = Number(info[3]);
-		var fcmp = Math.round(21000000 / k) / 1000.0;
+		var r = Number(c);
+		var fcmp = Math.round(21000000.0 / k) / 1000.0;
 		var life = Number(info[6]);
 		var slide = Number(info[7]);
 		var hold = ((k * r / 100) - life) / 2;
 		var score = Math.ceil(hold / 10) * 10 + life + slide;
-		document.getElementById("normal").innerHTML = "<div>★" + info[0] + "</div><div>Note数：" + info[1] + "</div><div>Count Stop：" + info[2] + "</div><div>达成率理论值：" + info[3] + "%</div><div>1 fine达成率变化：" + fcmp + "%</div><div>理论值必要分数：" + score + "</div>";
+		if (isCS) score = Math.round(score * 1.1);
+		var h = Math.ceil(k / 200000.0);
+		if (isCS) h *= 11;
+		else h *= 10;
+		document.getElementById("normal").innerHTML = "<div>★" + info[0] + "</div><div>Note数：" + info[1] + "</div><div>Count Stop：" + info[2] + "</div><div>达成率理论值：" + c + "%</div><div>1 fine达成率变化：" + fcmp + "%</div><div>理论值必要分数：" + score + "</div><div>0.01%达成率所需Hold分数：" + h +"</div>";
 	}
 }
-function getHard() {
+function getHard(isCS) {
 	var info = db[songId-1][3].split(",");
 	if (info[0] == "-")
 		document.getElementById("hard").innerHTML = "未配信";
 	else {
+		var c = info[3];
+		if (isCS) c = info[4];
 		var k = Number(info[5]);
-		var r = Number(info[3]);
-		var fcmp = Math.round(21000000 / k) / 1000.0;
+		var r = Number(c);
+		var fcmp = Math.round(21000000.0 / k) / 1000.0;
 		var life = Number(info[6]);
 		var slide = Number(info[7]);
 		var hold = ((k * r / 100) - life) * 2;
 		var score = Math.ceil(hold / 10) * 10 + life + slide;
-		document.getElementById("hard").innerHTML = "<div>★" + info[0] + "</div><div>Note数：" + info[1] + "</div><div>Count Stop：" + info[2] + "</div><div>达成率理论值：" + info[3] + "%</div><div>1 fine达成率变化：" + fcmp + "%</div><div>理论值必要分数：" + score + "</div>";
+		if (isCS) score = Math.round(score * 1.1);
+		var h = Math.ceil(k / 50000.0);
+		if (isCS) h *= 11;
+		else h *= 10;
+		document.getElementById("hard").innerHTML = "<div>★" + info[0] + "</div><div>Note数：" + info[1] + "</div><div>Count Stop：" + info[2] + "</div><div>达成率理论值：" + r + "%</div><div>1 fine达成率变化：" + fcmp + "%</div><div>理论值必要分数：" + score + "</div><div>0.01%达成率所需Hold分数：" + h +"</div>";
 	}
 	if (info[2] == "○")
 		document.getElementById("hardrt").innerHTML = "<div class='route'>切HOLD</div>";
@@ -1536,19 +1562,25 @@ function getHard() {
 		}
 	}
 }
-function getExtreme() {
+function getExtreme(isCS) {
 	var info = db[songId-1][4].split(",");
 	if (info[0] == "-")
 		document.getElementById("extreme").innerHTML = "未配信";
 	else {
+		var c = info[3];
+		if (isCS) c = info[4];
 		var k = Number(info[5]);
-		var r = Number(info[3]);
-		var fcmp = Math.round(21000000 / k) / 1000.0;
+		var r = Number(c);
+		var fcmp = Math.round(21000000.0 / k) / 1000.0;
 		var life = Number(info[6]);
 		var slide = Number(info[7]);
 		var hold = ((k * r / 100) - life) * 5;
 		var score = Math.ceil(hold / 10) * 10 + life + slide;
-		document.getElementById("extreme").innerHTML = "<div>★" + info[0] + "</div><div>Note数：" + info[1] + "</div><div>Count Stop：" + info[2] + "</div><div>达成率理论值：" + info[3] + "%</div><div>1 fine达成率变化：" + fcmp + "%</div><div>理论值必要分数：" + score + "</div>";
+		if (isCS) score = Math.round(score * 1.1);
+		var h = Math.ceil(k / 20000.0);
+		if (isCS) h *= 11;
+		else h *= 10;
+		document.getElementById("extreme").innerHTML = "<div>★" + info[0] + "</div><div>Note数：" + info[1] + "</div><div>Count Stop：" + info[2] + "</div><div>达成率理论值：" + c + "%</div><div>1 fine达成率变化：" + fcmp + "%</div><div>理论值必要分数：" + score + "</div><div>0.01%达成率所需Hold分数：" + h +"</div>";
 	}
 	if (info[2] == "○")
 		document.getElementById("exrt").innerHTML = "<div class='route'>切HOLD</div>";
@@ -1574,19 +1606,25 @@ function getExtreme() {
 		}
 	}
 }
-function getExtra() {
+function getExtra(isCS) {
 	var info = db[songId-1][5].split(",");
 	if (info[0] == "-")
 		document.getElementById("extra").innerHTML = "未配信";
 	else {
+		var c = info[3];
+		if (isCS) c = info[4];
 		var k = Number(info[5]);
-		var r = Number(info[3]);
-		var fcmp = Math.round(21000000 / k) / 1000.0;
+		var r = Number(c);
+		var fcmp = Math.round(21000000.0 / k) / 1000.0;
 		var life = Number(info[6]);
 		var slide = Number(info[7]);
 		var hold = ((k * r / 100) - life) * 5;
 		var score = Math.ceil(hold / 10) * 10 + life + slide;
-		document.getElementById("extra").innerHTML = "<div>★" + info[0] + "</div><div>Note数：" + info[1] + "</div><div>Count Stop：" + info[2] + "</div><div>达成率理论值：" + info[3] + "%</div><div>1 fine达成率变化：" + fcmp + "%</div><div>理论值必要分数：" + score + "</div>";
+		if (isCS) score = Math.round(score * 1.1);
+		var h = Math.ceil(k / 20000.0);
+		if (isCS) h *= 11;
+		else h *= 10;
+		document.getElementById("extra").innerHTML = "<div>★" + info[0] + "</div><div>Note数：" + info[1] + "</div><div>Count Stop：" + info[2] + "</div><div>达成率理论值：" + c + "%</div><div>1 fine达成率变化：" + fcmp + "%</div><div>理论值必要分数：" + score + "</div><div>0.01%达成率所需Hold分数：" + h +"</div>";
 		if (info[2] == "○")
 			document.getElementById("exexrt").innerHTML = "<div class='route'>切HOLD</div>";
 		else document.getElementById("exexrt").innerHTML = "<div class='route'>达成率路线</div>";
