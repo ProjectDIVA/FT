@@ -83,6 +83,12 @@ header nav .li {
 #song {
 	font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Kaku Gothic Pro', 'Meiryo';
 }
+#history tr {
+	vertical-align: top;
+}
+#history tr td {
+	padding-right: 1em;
+}
 .small {
 	font-size: 0.8em;
 }
