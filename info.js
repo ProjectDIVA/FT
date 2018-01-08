@@ -1516,6 +1516,16 @@ function getNormal(isCS) {
 		if (isCS) h *= 11;
 		else h *= 10;
 		document.getElementById("normal").innerHTML = "<div>★" + info[0] + "</div><div>Note数：" + info[1] + "</div><div>Count Stop：" + info[2] + "</div><div>达成率理论值：" + c + "%</div><div>1 fine达成率变化：" + fcmp + "%</div><div>理论值必要分数：" + score + "</div><div>0.01%达成率所需Hold分数：" + h +"</div>";
+		if (info[2] == "○")
+		document.getElementById("normrt").innerHTML = "<div class='route'>切HOLD</div>";
+		else document.getElementById("normrt").innerHTML = "<div class='route'>达成率路线</div>";
+		if (ca[songName] == null) document.getElementById("normrt").innerHTML += "<div>无</div>";
+		else {
+			var caac = getCA(ca[songName], 0);
+			if (caac == "-")
+				document.getElementById("normrt").innerHTML += "<div>无</div>";
+			else document.getElementById("normrt").innerHTML += "<div>" + caac + "</div>";
+		}
 	}
 }
 function getHard(isCS) {
