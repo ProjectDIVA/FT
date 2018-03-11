@@ -16,8 +16,8 @@
 			<nav>
                 <span class="li"><a href="index.html">首页</a></span>
 				<span class="li"><a href="song.html">歌曲</a></span>
+				<span class="li"><a href="module.html">服装</a></span>
 		        <span class="li">资料</span>
-		        <span class="li"><a href="refer.html">其他</a></span>
 			</nav>
 	    </div>
 	</header>
@@ -30,12 +30,12 @@
 		<div style="text-indent: 2em">CHALLENGE TIME：EASY和NORMAL难度中出现的CT加分按照Combo数乘以10计算，如第一个Combo加10分，第二个Combo加20分，直到50Combo之后每个Combo均只加500分。</div>
 		<div style="text-indent: 2em">Life加分：当生命值达到最大之后每一次COOL判定加10分，但是在CHALLENGE TIME中不加分。</div>
 		<div style="text-indent: 2em">多押：在单键基础上直接乘以按键数，如果按错或少按或多按则只算单个键的分数。</div>
-		<div style="text-indent: 2em">滑条（Slide）：分为刚开始的箭头和链条（Chain）部分，划到箭头之后等链条全部变蓝即可松手，箭头部分的得分以及Combo计算方法同基本点一样，链条中的note相当于画面中的每一小格，每个note除了同箭头的判定（COOL或FINE）得分外还有额外的加分，假如一个链条有6个note，那么第一个note加10分，第二个加20分，以此类推，最后一个除了有60分加分外还有MAX SLIDE BONUS的1000分，此时画面显示“MAX SLIDE +1060”。</div>
+		<div style="text-indent: 2em">滑条（Slide）：分为刚开始的箭头和链条（Chain）部分，划到箭头之后等链条全部变蓝即可松手，箭头部分的得分以及Combo计算方法同基本点一样，链条中的note相当于画面中的每一小格，每个note除了同基本点的判定（包括Life）得分外还有额外的加分，假设一个链条有6个note，那么第一个note加10分，第二个加20分，以此类推，最后一个除了有60分加分外还有MAX SLIDE BONUS的1000分，此时画面显示“MAX SLIDE +1060”。</div>
 		<div style="text-indent: 2em">Hold加分：单个按键每1/60秒加10分，Hold最长为5秒钟，如果Hold满就能得到3000分以及MAX BONUS的加分（1500分）。多个按键同时Hold的分数是直接乘以按键数，如果是中途加进来的Hold，则最长时间5秒是以最后一个加入Hold的Note开始算起。</div>
 		<div style="text-indent: 2em">因此分数的计算总共包括基本点、Combo、CHALLENGE TIME、Life、多押、Chain Slide、Hold的加分，其中HARD和EXTREME难度没有CT加分，EASY难度没有多押和Hold加分。</div>
 		<div style="text-indent: 2em">达成率：以基准点为100%，再加上Hold和Life加分部分组成。</div>
 		<div style="text-indent: 2em">基准点：全COOL时的基本点分数、COMBO分、CT加分、多押、Chain分数的总和。</div>
-		<div style="text-indent: 2em">达成率计算：100 × {Hold除外的分数 + min(基准点 × 0.05, Hold分数 × Hold达成率系数) } / 基准点<br>Hold的达成率系数和难度有关，由于EASY没有Hold，所以系数为0，NORMAL、HARD和EXTREME的系数分别为2、0.5、0.2。</div>
+		<div style="text-indent: 2em">达成率计算：100 × {Hold除外的分数 + min(基准点 × 0.05, Hold分数 × Hold达成率系数) } / 基准点<br>Hold的达成率系数和难度有关，EASY难度没有Hold，NORMAL、HARD和EXTREME的系数分别为2、0.5、0.2。</div>
 		<div style="text-indent: 2em">Hold加分部分的达成率最高为5%，超过的部分即使分数再高也不会增加达成率。另外如果某歌曲达到了理论最高分数，达成率也可能低于100%。</div>
 		<h1>SA相关</h1>
 		<div style="text-indent: 2em">主要是在各种Hold加分中计算出分数最大的玩法，是冲排行榜的一种必要手段。</div>
@@ -44,8 +44,84 @@
 		<div style="text-indent: 2em">(Chain) Slide与手大小：在街机上只有四个按键，玩家如果在Hold的同时碰到滑条，就需要用到一定的技巧，这时候手太小可能会有一些不便。家用机影响相对较小一些，可以把Hold转移到LR键上，然后用摇杆进行操作。<s>（不过手太小的话或许会握不住手柄？）</s></div>
 		<div style="text-indent: 2em">切Hold与舍弃连打：游戏中切换各种复杂的Hold，记忆力是关键，有时候在回忆下一个按键怎么操作的同时，打出COOL也是很困难的。在Hold过程中应该舍弃一些按键，如一些打成WRONG，一些放掉不打（WORST）。</div>
 		<div style="text-indent: 2em">早迟判定：有些note的间隔不到5秒钟，在开始Hold的时候稍微提前一点按下，直到5秒钟MAX BONUS之后再去按下一个note，虽然这时候按键相对比较晚，但仍在正常的判定范围内。</div>
-		<div style="text-indent: 2em">燕返/燕弹：由于街机只有四个键，在按住Hold之后遇到下一个相同的按键需要快速弹起并重新按下，考验手部肌肉能力（划掉）。家用机则可以通过设置LR的键位来减少或者避免这种情况。</div>
+		<div style="text-indent: 2em">燕返/燕弹：由于街机只有四个键，在某个键Hold之后遇到下一个相同的按键需要快速弹起并重新按下，有多种手法。家用机则可以通过设置LR的键位来减少或者避免这种情况。</div>
+		<div style="text-indent: 2em">ALMOST：家用机的一种辅助判定，遇到多键同时按的note时按错（某些特定情况下少按）判定为ALMOST，此时不减生命值，根据这个特性可以在家用机上生成新路线，比街机得到更多的分数。</div>
 		<div></div>
+		<h1>关于生命值</h1>
+		<div>在最开始的时候，初始值为127（最大256），当生命值到0的时候即为FAILED。</div>
+		<table id="life" style="border-collapse: collapse;">
+		<tr class="atwiki_tr_odd atwiki_tr_1" >		<!--0-0--><td style=""></td>
+		<!--0-1-->
+		<!--0-2-->
+		<!--0-3-->
+		<!--0-4-->
+				<!--0-5--><td style="text-align:center;" colspan="5" >通常情况</td>
+		<!--0-6-->
+		<!--0-7-->
+		<!--0-8-->
+				<!--0-9--><td style="text-align:center;" colspan="4" >打错情况</td></tr>
+		<tr class="atwiki_tr_even atwiki_tr_2" >		<!--1-0--><td style=""></td>
+				<!--1-1--><td style="text-align:center;">
+		<span style="color: orange;"><!--@@@@@-->COOL</span>
+		</td>
+				<!--1-2--><td style="text-align:center;">
+		<span style="color: gray;"><!--@@@@@-->FINE</span>
+		</td>
+				<!--1-3--><td style="text-align:center;">
+		<span style="color: green;"><!--@@@@@-->SAFE</span>
+		</td>
+				<!--1-4--><td style="text-align:center;">
+		<span style="color: blue;"><!--@@@@@-->SAD</span>
+		</td>
+				<!--1-5--><td style="text-align:center;">
+		<span style="color: purple;"><!--@@@@@-->WORST</span>
+		</td>
+				<!--1-6--><td style="text-align:center;">
+		<span style="color: red;"><!--@@@@@-->WRONG</span>
+		</td>
+				<!--1-7--><td style="text-align:center;">
+		<span style="color: navy;"><!--@@@@@-->WRONG</span>
+		</td>
+				<!--1-8--><td style="text-align:center;">
+		<span style="color: green;"><!--@@@@@-->WRONG</span>
+		</td>
+				<!--1-9--><td style="text-align:center;">
+		<span style="color: blue;"><!--@@@@@-->WRONG</span>
+		</td></tr>
+		<tr class="atwiki_tr_odd atwiki_tr_3" >		<!--2-0--><td style="">EASY</td>
+				<!--2-1--><td style="text-align:center;">+3</td>
+				<!--2-2--><td style="text-align:center;">+2</td>
+				<!--2-3--><td style="text-align:center;">+1</td>
+				<!--2-4--><td rowspan="3" style="text-align:center;">-10</td>
+				<!--2-5--><td rowspan="3" style="text-align:center;">-20</td>
+				<!--2-6--><td style="text-align:center;">0</td>
+				<!--2-7--><td style="text-align:center;">-3?</td>
+				<!--2-8--><td style="text-align:center;">-8?</td>
+				<!--2-9--><td style="text-align:center;">-15?</td></tr>
+		<tr class="atwiki_tr_even atwiki_tr_4" >		<!--3-0--><td style="">NORMAL</td>
+				<!--3-1--><td rowspan="3" style="text-align:center;">+2</td>
+				<!--3-2--><td rowspan="3" style="text-align:center;">+1</td>
+				<!--3-3--><td rowspan="3" style="text-align:center;">0</td>
+				<!--3-6--><td style="text-align:center;">-3?</td>
+				<!--3-7--><td style="text-align:center;">-6?</td>
+				<!--3-8--><td style="text-align:center;">-8?</td>
+				<!--3-9--><td style="text-align:center;">-15?</td></tr>
+		<tr class="atwiki_tr_odd atwiki_tr_5" >		<!--4-0--><td style="">HARD</td>
+				<!--4-6--><td style="text-align:center;">-3</td>
+				<!--4-7--><td style="text-align:center;">-6</td>
+				<!--4-8--><td style="text-align:center;">-8</td>
+				<!--4-9--><td style="text-align:center;">-15?</td></tr>
+		<tr class="atwiki_tr_even atwiki_tr_6" >		<!--5-0--><td style="">EXTREME</td>
+				<!--5-4--><td style="text-align:center;">-15</td>
+				<!--5-5--><td style="text-align:center;">-25</td>
+				<!--5-6--><td style="text-align:center;">-6</td>
+				<!--5-7--><td style="text-align:center;">-8</td>
+				<!--5-8--><td style="text-align:center;">-10</td>
+				<!--5-9--><td style="text-align:center;">-20</td></tr>
+		</table>
+		<div>*生命值为0时游戏强制结束，结果判定为NOT CLEAR，但在完奏模式下会显示“PROTECTED”且游戏可以继续进行。</div>
+		<div>在最开始有一定的Safety时间，无论怎么打生命值不会低于76，在解除前11秒会有倒计时，一直到0解除，解除时间为EASY 60秒钟，NORMAL 40秒，HARD和EXTREME 30秒。</div>
+		
 	</article>
 	
 
