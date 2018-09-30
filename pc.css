@@ -4,7 +4,8 @@ body {
 	font-family: 'Arial', 'Microsoft Yahei';
 }
 header {
-  background: #489d96;
+  /*height: 280px;*/
+  background: /*url(top_ftdx.jpg) no-repeat center top;*/#489d96;
   width: 100%;
 }
 header h1 {
