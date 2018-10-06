@@ -8,6 +8,10 @@ header {
   background: /*url(top_ftdx.jpg) no-repeat center top;*/#489d96;
   width: 100%;
 }
+header.pic {
+	height: 420px;
+	background: url(top_ftdx.jpg) no-repeat center top;
+}
 header h1 {
   text-align: center;
   padding-top: 10px;
@@ -21,6 +25,11 @@ header nav {
   text-align: center;
   color: #fff;
   padding-bottom: 5px;
+}
+header.pic nav {
+	color: #333;
+	position: absolute;
+	bottom: 0px;
 }
 header nav a {
 	text-decoration: none;
@@ -61,6 +70,11 @@ header nav .li {
 	border-bottom: solid 1px #ccc;
 	padding-top: 15px;
 	font-size: 1.3em;
+}
+#content h3 {
+	border-bottom: solid 1px #ccc;
+	padding-top: 15px;
+	font-size: 1.2em;
 }
 #list table {
 	width: 100%;
