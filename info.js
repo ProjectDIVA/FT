@@ -411,7 +411,7 @@ db[67][1]="-";
 db[67][2]="5,430,○,○,105.91,105.91,336000,339060,0,3,0,1,0,0";
 db[67][3]="6,590,○,○,106.18,106.18,445250,450510,0,8,0,4,0,0";
 db[67][4]="9,684,×,×,105.04,105.07,554750,560950,0,79,2,5,0,0";
-db[67][5]="9.5,703,×,×,103.82,103.84,698500,707170,37100,110,2,5";
+db[67][5]="9.5,703,×,×,103.82,103.86,698500,707170,37100,110,2,5";
 db[68][0]="壊セ壊セ#54#-#Future Sound#116";
 db[68][1]="1.5,208,100.81,163710,165050,3100";
 db[68][2]="4,296,○,○,105.82,105.82,249000,250920,7260,1,0,0,0,0";
@@ -837,7 +837,7 @@ db[138][1]="-";
 db[138][2]="4.5,341,○,○,105.72,105.72,276250,278260,0,1,0,1,0,0";
 db[138][3]="6,372,○,○,106.11,106.11,276250,279330,0,3,0,2,0,0";
 db[138][4]="7,412,○,○,106.03,106.03,336250,339730,0,63,0,2,0,0";
-db[138][5]="8,432,×,×,105.36,105.49,588750,596750,80820,82,2,6";
+db[138][5]="8,432,×,×,105.39,105.49,588750,596750,80820,82,2,6";
 db[139][0]="なりすましゲンガー#56#-#Future Sound#178";
 db[139][1]="4,404,100.9,324500,327450,2360";
 db[139][2]="4,470,○,○,105.88,105.88,377000,380350,2360,1,0,0,0,0";
@@ -1132,12 +1132,12 @@ db[187][2]="4,335,○,○,105.71,105.71,273750,275710,0,0,0,3,0,0";
 db[187][3]="5.5,369,○,○,106.1,106.1,276000,279050,0,4,0,3,0,0";
 db[187][4]="7,415,○,○,106.08,106.08,324500,328010,0,32,0,3,0,0";
 db[187][5]="7.5,414,○,○,106.2,106.2,346750,350930,11420,19,0,0";
-db[188][0]="ペリコ・スペースシッパー#3#-#Colorful Tone#150";
+db[188][0]="ペリコ・スペースシッパー#3#42#Colorful Tone#150";
 db[188][1]="-";
 db[188][2]="4,368,○,○,105.94,105.94,278860,281490,0,0,0,1,0,0";
 db[188][3]="5,442,○,○,106.14,106.14,328750,332530,0,0,0,3,0,0";
 db[188][4]="7.5,493,×,×,104.4,104.42,386500,390790,0,35,2,3,0,0";
-db[188][5]="-";
+db[188][5]="8.5,589,-,-,101.41,101.41,709500,719510,114080,43,0,9";
 db[189][0]="VOiCE -DIVA　MIX-#10#20#Future Sound#135";
 db[189][1]="2,296,100.84,231500,233450,0";
 db[189][2]="4,369,○,○,105.79,105.79,294750,297090,0,1,0,1,0,0";
@@ -1523,9 +1523,11 @@ function getNormal(isCS) {
 		var h = Math.ceil(k / 200000.0);
 		if (isCS) h *= 11;
 		else h *= 10;
-		document.getElementById("normal").innerHTML = "<div>★" + info[0] + "</div><div>Note数：" + info[1] + "</div><div>Count Stop：" + cnst + "</div><div>达成率理论值：" + c + "%</div><div>1 fine达成率变化：" + fcmp + "%</div><div>理论值必要分数：" + score + "</div><div>理论值必要同时Hold：" + multi + "</div><div>0.01%达成率所需Hold分数：" + h +"</div>";
-		if (info[2] == "○")
-		document.getElementById("normrt").innerHTML = "<div class='route'>切HOLD</div>";
+		document.getElementById("normal").innerHTML = "<div>★" + info[0] + "</div><div>Note数：" + info[1] + "</div><div>Count Stop：" + cnst + "</div><div>达成率理论值：" + c + "%</div><div>1 fine达成率变化：" + fcmp + "%</div><div>理论值必要分数：" + score + "</div><div>理论值必要同时Hold：" + multi + "</div>";
+		if (cnst == "×")
+			document.getElementById("normal").innerHTML += "<div>0.01%达成率所需Hold分数：" + h +"</div>";
+		if (cnst == "○")
+			document.getElementById("normrt").innerHTML = "<div class='route'>切HOLD</div>";
 		else document.getElementById("normrt").innerHTML = "<div class='route'>达成率路线</div>";
 		if (ca[songName] == null) document.getElementById("normrt").innerHTML += "<div>无</div>";
 		else document.getElementById("normrt").innerHTML += "<div>" + getCA(ca[songName], 0) + "</div>";
@@ -1556,8 +1558,10 @@ function getHard(isCS) {
 		var h = Math.ceil(k / 50000.0);
 		if (isCS) h *= 11;
 		else h *= 10;
-		document.getElementById("hard").innerHTML = "<div>★" + info[0] + "</div><div>Note数：" + info[1] + "</div><div>Count Stop：" + cnst + "</div><div>达成率理论值：" + r + "%</div><div>1 fine达成率变化：" + fcmp + "%</div><div>理论值必要分数：" + score + "</div><div>理论值必要同时Hold：" + multi + "</div><div>0.01%达成率所需Hold分数：" + h +"</div>";
-		if (info[2] == "○")
+		document.getElementById("hard").innerHTML = "<div>★" + info[0] + "</div><div>Note数：" + info[1] + "</div><div>Count Stop：" + cnst + "</div><div>达成率理论值：" + r + "%</div><div>1 fine达成率变化：" + fcmp + "%</div><div>理论值必要分数：" + score + "</div><div>理论值必要同时Hold：" + multi + "</div>";
+		if (cnst == "×")
+			document.getElementById("hard").innerHTML += "<div>0.01%达成率所需Hold分数：" + h +"</div>";
+		if (cnst == "○")
 			document.getElementById("hardrt").innerHTML = "<div class='route'>切HOLD</div>";
 		else document.getElementById("hardrt").innerHTML = "<div class='route'>达成率路线</div>";
 		if (ca[songName] == null) document.getElementById("hardrt").innerHTML += "<div>无</div>";
@@ -1597,8 +1601,10 @@ function getExtreme(isCS) {
 		var h = Math.ceil(k / 20000.0);
 		if (isCS) h *= 11;
 		else h *= 10;
-		document.getElementById("extreme").innerHTML = "<div>★" + info[0] + "</div><div>Note数：" + info[1] + "</div><div>Count Stop：" + cnst + "</div><div>达成率理论值：" + c + "%</div><div>1 fine达成率变化：" + fcmp + "%</div><div>理论值必要分数：" + score + "</div><div>理论值必要同时Hold：" + multi + "</div><div>0.01%达成率所需Hold分数：" + h +"</div>";
-		if (info[2] == "○")
+		document.getElementById("extreme").innerHTML = "<div>★" + info[0] + "</div><div>Note数：" + info[1] + "</div><div>Count Stop：" + cnst + "</div><div>达成率理论值：" + c + "%</div><div>1 fine达成率变化：" + fcmp + "%</div><div>理论值必要分数：" + score + "</div><div>理论值必要同时Hold：" + multi + "</div>";
+		if (cnst == "×")
+			document.getElementById("extreme").innerHTML += "<div>0.01%达成率所需Hold分数：" + h +"</div>";
+		if (cnst == "○")
 			document.getElementById("exrt").innerHTML = "<div class='route'>切HOLD</div>";
 		else document.getElementById("exrt").innerHTML = "<div class='route'>达成率路线</div>";
 		if (ca[songName] == null) document.getElementById("exrt").innerHTML += "<div>无</div>";
@@ -1636,8 +1642,9 @@ function getExtra(isCS) {
 		var h = Math.ceil(k / 20000.0);
 		if (isCS) h *= 11;
 		else h *= 10;
-		document.getElementById("extra").innerHTML = "<div>★" + info[0] + "</div><div>Note数：" + info[1] + "</div><div>Count Stop：" + cnst + "</div><div>达成率理论值：" + c + "%</div><div>1 fine达成率变化：" + fcmp + "%</div><div>理论值必要分数：" + score + "</div><div>理论值必要同时Hold：" + multi + "</div><div>0.01%达成率所需Hold分数：" + h +"</div>";
-		if (info[2] == "○")
+		document.getElementById("extra").innerHTML = "<div>★" + info[0] + "</div><div>Note数：" + info[1] + "</div><div>Count Stop：" + cnst + "</div><div>达成率理论值：" + c + "%</div><div>1 fine达成率变化：" + fcmp + "%</div><div>理论值必要分数：" + score + "</div><div>理论值必要同时Hold：" + multi + "</div>";
+		if (cnst == "×") document.getElementById("extra").innerHTML += "<div>0.01%达成率所需Hold分数：" + h +"</div>";
+		if (cnst == "○")
 			document.getElementById("exexrt").innerHTML = "<div class='route'>切HOLD</div>";
 		else document.getElementById("exexrt").innerHTML = "<div class='route'>达成率路线</div>";
 		if (ca[songName] == null) document.getElementById("exexrt").innerHTML += "<div>无</div>";
